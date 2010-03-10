@@ -372,7 +372,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 53);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Estimated Delivery Time";
+            this.label5.Text = "Expected Delivery Time";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
