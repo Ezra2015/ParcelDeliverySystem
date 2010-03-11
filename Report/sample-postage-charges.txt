@@ -1,0 +1,15 @@
+; We pretend that semi-colon means comments.
+; I should've built this in, haha.
+; It's not difficult to get the program to ignore all lines that start with ';'.
+; Anyway, columns as follows:
+
+; Origin	Destination	Delivery Service	Weight-step	Available days	Delivery time (estimated)
+;
+;
+; Zero means Sunday
+; 1 means Monday
+; 6 means Saturday
+; So, all days will be 0,1,2,3,4,5,6,7.
+
+
+Singapore	Singapore	DHL	0.35,0.45,0.75,1.00	0,1,2,3,4,5,6	1
