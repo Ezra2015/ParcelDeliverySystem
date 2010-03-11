@@ -51,6 +51,7 @@
             this.pccPage = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.pcBox = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.wtBox = new System.Windows.Forms.TextBox();
             this.estTxtResult = new System.Windows.Forms.TextBox();
@@ -59,11 +60,12 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.intermediateCourierTabPage1 = new IntermediateCourierTabPage();
+            this.currencyConverterTabPage1 = new CurrencyConverterTabPage();
             this.rateCost = new System.Windows.Forms.Button();
             this.errorDate = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorPC = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorDPC = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label14 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.edtPage.SuspendLayout();
             this.edtBox.SuspendLayout();
@@ -78,6 +80,8 @@
             // 
             this.tabControl.Controls.Add(this.edtPage);
             this.tabControl.Controls.Add(this.pccPage);
+            this.tabControl.Controls.Add(this.intermediateCourierTabPage1);
+            this.tabControl.Controls.Add(this.currencyConverterTabPage1);
             this.tabControl.Location = new System.Drawing.Point(12, 16);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -361,6 +365,16 @@
             this.pcBox.TabStop = false;
             this.pcBox.Text = "Postage Charge";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(18, 162);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(530, 13);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Note: Please complete filling in Estimated Delivery Time page before you calculat" +
+                "e postage charge. Thank you.";
+            // 
             // comboBox2
             // 
             this.comboBox2.DropDownHeight = 100;
@@ -440,13 +454,31 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Estimated Delivery Time:";
             // 
+            // intermediateCourierTabPage1
+            // 
+            this.intermediateCourierTabPage1.Location = new System.Drawing.Point(4, 22);
+            this.intermediateCourierTabPage1.Name = "intermediateCourierTabPage1";
+            this.intermediateCourierTabPage1.Size = new System.Drawing.Size(602, 308);
+            this.intermediateCourierTabPage1.TabIndex = 2;
+            this.intermediateCourierTabPage1.Text = "Intermediate Courier";
+            this.intermediateCourierTabPage1.Visible = false;
+            // 
+            // currencyConverterTabPage1
+            // 
+            this.currencyConverterTabPage1.Location = new System.Drawing.Point(4, 22);
+            this.currencyConverterTabPage1.Name = "currencyConverterTabPage1";
+            this.currencyConverterTabPage1.Size = new System.Drawing.Size(602, 308);
+            this.currencyConverterTabPage1.TabIndex = 3;
+            this.currencyConverterTabPage1.Text = "Currency Converter";
+            this.currencyConverterTabPage1.Visible = false;
+            // 
             // rateCost
             // 
-            this.rateCost.Location = new System.Drawing.Point(442, 9);
+            this.rateCost.Location = new System.Drawing.Point(494, 9);
             this.rateCost.Name = "rateCost";
-            this.rateCost.Size = new System.Drawing.Size(166, 23);
+            this.rateCost.Size = new System.Drawing.Size(114, 23);
             this.rateCost.TabIndex = 1;
-            this.rateCost.Text = "Local/Overseas Postage Rates";
+            this.rateCost.Text = "Postage Rates...";
             this.rateCost.UseVisualStyleBackColor = true;
             this.rateCost.Click += new System.EventHandler(this.rateCost_Click);
             // 
@@ -462,22 +494,12 @@
             // 
             this.errorDPC.ContainerControl = this;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 162);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(530, 13);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "Note: Please complete filling in Estimated Delivery Time page before you calculat" +
-                "e postage charge. Thank you.";
-            // 
             // PDS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(634, 372);
+            this.ClientSize = new System.Drawing.Size(634, 375);
             this.Controls.Add(this.rateCost);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -538,6 +560,8 @@
         private System.Windows.Forms.ErrorProvider errorDPC;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label label14;
+        private IntermediateCourierTabPage intermediateCourierTabPage1;
+        private CurrencyConverterTabPage currencyConverterTabPage1;
     }
 }
 
