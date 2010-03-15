@@ -454,6 +454,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EDTOutput";
             this.Text = "EDTOutput";
+            this.Load += new System.EventHandler(this.EDTOutput_Load);
             this.edtGroup.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -462,7 +463,6 @@
         }
 
         #endregion
-
         private System.Windows.Forms.GroupBox edtGroup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;

@@ -6,23 +6,26 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
 
 namespace ParcelDeliverySystem
 {
-    public partial class PDS:Form
+    public partial class EDTresult : Form
     {
-        public PDS()
+        public EDTresult()
         {
             InitializeComponent();
         }
-        public void PDS_Load(object sender, EventArgs e)
+
+        public Label Labeltest
         {
+            get { return this.lbltest; }
+            set { this.lbltest = value; }
+
         }
-        private void closeBtn_Click(object sender, EventArgs e)
+
+        private void EDTresult_Load(object sender, EventArgs e)
         {
-            this.Close();
-            this.Dispose();
+
         }
     }
 }
