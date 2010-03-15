@@ -11,7 +11,6 @@ public class DatabaseManager
         this.dbpath = dbpath;
         this.objects = new ArrayList();
 
-
         if (File.Exists(this.dbpath))
         {
             // Console.WriteLine("File exists.");
@@ -58,6 +57,4 @@ public class DatabaseManager
             return this.objects.Count;
         }
     }
-
-    
 }

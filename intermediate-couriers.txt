@@ -1,0 +1,3 @@
+Singapore	USA	Singapore	2.00	1
+Malaysia	Singapore	Singapore	2.00	1
+Singapore	USA	Singapore	2.00	1

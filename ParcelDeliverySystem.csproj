@@ -55,16 +55,26 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="EDTOutput.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EDTOutput.Designer.cs">
-      <DependentUpon>EDTOutput.cs</DependentUpon>
+    <Compile Include="EstimatedDeliveryTime.cs" />
+    <Compile Include="EstimatedDeliveryTimeCalculator.cs" />
+    <Compile Include="EstimatedDeliveryTimeTabPage.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="IntermediateCourier.cs" />
     <Compile Include="IntermediateCourierCalculator.cs" />
     <Compile Include="IntermediateCourierTabPage.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PostageCharge.cs" />
+    <Compile Include="PostageChargeCalculator.cs" />
+    <Compile Include="PostageChargeTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EDTresult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EDTresult.Designer.cs">
+      <DependentUpon>EDTresult.cs</DependentUpon>
     </Compile>
     <Compile Include="TextParse.cs" />
     <Compile Include="Form1.cs">
@@ -81,10 +91,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="EDTOutput.resx">
-      <DependentUpon>EDTOutput.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -97,6 +103,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EDTresult.resx">
+      <DependentUpon>EDTresult.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

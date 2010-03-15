@@ -19,109 +19,109 @@ namespace ParcelDeliverySystem
         public Label getdslbl1
         {
             get { return this.dslbl1; }
-            set { getdslbl1 = value; }
+            set { this.getdslbl1 = value; }
             
         }
         public Label getdslbl2
         {
             get { return this.dslbl2; }
-            set { getdslbl2 = value; }
+            set { this.getdslbl2 = value; }
 
         }
         public Label getdslbl3
         {
             get { return this.dslbl3; }
-            set { getdslbl3 = value; }
+            set { this.getdslbl3 = value; }
 
         }
         public Label getoclbl1
         {
             get { return this.oclbl1; }
-            set { getoclbl1 = value; }
+            set { this.getoclbl1 = value; }
 
         }
         public Label getoclbl2
         {
             get { return this.oclbl2; }
-            set { getoclbl2 = value; }
+            set { this.getoclbl2 = value; }
 
         }
         public Label getoclbl3
         {
             get { return this.oclbl3; }
-            set { getoclbl1 = value; }
+            set { this.getoclbl1 = value; }
 
         }
         public Label getdclbl1
         {
             get { return this.dclbl1; }
-            set { getdclbl1 = value; }
+            set { this.getdclbl1 = value; }
 
         }
         public Label getdclbl2
         {
             get { return this.dclbl2; }
-            set { getdclbl2 = value; }
+            set { this.getdclbl2 = value; }
 
         }
         public Label getdclbl3
         {
             get { return this.dclbl3; }
-            set { getdclbl3 = value; }
+            set { this.getdclbl3 = value; }
 
         }
         public Label getsdlbl1
         {
             get { return this.sdlbl1; }
-            set { getsdlbl1 = value; }
+            set { this.getsdlbl1 = value; }
 
         }
         public Label getsdlbl2
         {
             get { return this.sdlbl2; }
-            set { getsdlbl2 = value; }
+            set { this.getsdlbl2 = value; }
 
         }
         public Label getsdlbl3
         {
             get { return this.sdlbl3; }
-            set { getsdlbl3 = value; }
+            set { this.getsdlbl3 = value; }
 
         }
         public Label getedlbl1
         {
             get { return this.edlbl1; }
-            set { getedlbl1 = value; }
+            set { this.getedlbl1 = value; }
 
         }
         public Label getedlbl2
         {
             get { return this.edlbl2; }
-            set { getedlbl2 = value; }
+            set { this.getedlbl2 = value; }
 
         }
         public Label getedlbl3
         {
             get { return this.edlbl3; }
-            set { getedlbl3 = value; }
+            set { this.getedlbl3 = value; }
 
         }
         public Label getwdlbl1
         {
             get { return this.wdlbl1; }
-            set { getwdlbl1 = value; }
+            set { this.getwdlbl1 = value; }
 
         }
         public Label getwdlbl2
         {
             get { return this.wdlbl2; }
-            set { getwdlbl2 = value; }
+            set { this.getwdlbl2 = value; }
 
         }
         public Label getwdlbl3
         {
             get { return this.wdlbl3; }
-            set { getwdlbl3 = value; }
+            set { this.getwdlbl3 = value; }
 
         }
 
@@ -129,6 +129,11 @@ namespace ParcelDeliverySystem
         {
             this.Close();
             this.Dispose(); //clear application memory storage
+        }
+
+        private void EDTOutput_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
