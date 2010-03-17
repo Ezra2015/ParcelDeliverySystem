@@ -61,6 +61,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="IntermediateCourier.cs" />
+    <Compile Include="IntermediateCourierCalcResult.cs" />
     <Compile Include="IntermediateCourierCalculator.cs" />
     <Compile Include="IntermediateCourierTabPage.cs">
       <SubType>Component</SubType>

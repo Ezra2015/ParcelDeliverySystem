@@ -1,3 +1,6 @@
-Singapore	USA	Singapore	2.00	1
-Malaysia	Singapore	Singapore	2.00	1
-Singapore	USA	Singapore	2.00	1
+Malaysia Courier	Korea	MYR	45	2	0,1,2,3,4,5,6
+Malaysia Courier	USA	MYR	100	5	0,1,2,3,4,5,6
+Malaysia Express	Korea	MYR	65	1	0,1,2,3,4,5,6
+Malaysia Express	USA	MYR	200	2	0,1,2,3,4,5,6
+Malaysia Express	Antartica	USD	1000	10	0,1,2,3,4,5,6
+Singapore Post The VPOST Company	Japan	EUR	50	20	0,1,2,3,4,5,6

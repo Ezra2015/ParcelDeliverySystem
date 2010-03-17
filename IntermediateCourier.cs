@@ -14,15 +14,29 @@ public class IntermediateCourier
     private double costPer100g;
     private String currencyType;
     private int estimatedDaysToDeliver;
+    private String availableDaysToDeliver;
+
+    public String AvailableDaysToDeliver
+    {
+        get
+        {
+            return this.availableDaysToDeliver;
+        }
+        set
+        {
+            this.availableDaysToDeliver = value;
+        }
+    }
 
     public IntermediateCourier(String companyName, String toLocation, String currencyType, double costPer100g,
-        int estimatedDaysToDeliver)
+        int estimatedDaysToDeliver, String availableDaysToDeliver)
     {
         this.companyName = companyName;
         this.toLocation = toLocation;
         this.costPer100g = costPer100g;
         this.currencyType = currencyType;
         this.estimatedDaysToDeliver = estimatedDaysToDeliver;
+        this.availableDaysToDeliver = availableDaysToDeliver;
     }
 
     public String CompanyName

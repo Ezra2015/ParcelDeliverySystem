@@ -10,6 +10,15 @@ public class IntermediateCourierCalculator
     private String currencyPath;
     private ArrayList entries;
     private CurrencyConverter cc;
+    private IntermediateCourierCalcResult result;
+
+    public IntermediateCourierCalcResult Result
+    {
+        get
+        {
+            return this.result;
+        }
+    }
 
     public IntermediateCourierCalculator(String thePath, String currencyPath)
     {
@@ -39,12 +48,20 @@ public class IntermediateCourierCalculator
             double total = theIc.CostPer100g * (mass / 100);
             if (convertToCurrencyType != null)
             {
-                return cc.Convert(theIc.CurrencyType, total, convertToCurrencyType);
+                total = cc.Convert(theIc.CurrencyType, total, convertToCurrencyType);
             }
+
+            // Set up an IntermediateCourierCalcResult result object.
+            
+            this.result = new IntermediateCourierCalcResult();
+            this.result.courier = theIc;
+            this.result.totalCost = new Currency(convertToCurrencyType, total);
+            this.result.totalMass = mass;
 
             return total;
         }
-
+        
+        this.result = null;
         return -1;
     }
 
@@ -56,7 +73,7 @@ public class IntermediateCourierCalculator
         {
             String[] s = ((String)dm.GetObject(i)).Split('\t');
             this.entries.Add(new IntermediateCourier(s[0], s[1], s[2], Double.Parse(s[3]),
-                Int32.Parse(s[4])));
+                Int32.Parse(s[4]), s[5]));
         }
     }
 

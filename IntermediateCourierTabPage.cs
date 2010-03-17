@@ -13,6 +13,7 @@ public class IntermediateCourierTabPage : TabPage
     TextBox mass;
     Label lblCurrencyType, lblCurrencyTypeValue;
     Label lblCostPer100g, lblCostPer100gValue;
+    Label lblEstimatedDaysToDeliver, lblEstimatedDaysToDeliverValue;
     String intermediateCouriersTxtPath = "intermediate-couriers.txt";
     String currenciesTxtPath = "currencies.txt";
 
@@ -38,6 +39,8 @@ public class IntermediateCourierTabPage : TabPage
             lblCurrencyTypeValue = new Label();
             lblCostPer100g = new Label();
             lblCostPer100gValue = new Label();
+            lblEstimatedDaysToDeliver = new Label();
+            lblEstimatedDaysToDeliverValue = new Label();
 
             calculateBtn.Text = "Calculate";
             calculateBtn.Size = new Size(70, 40);
@@ -55,6 +58,11 @@ public class IntermediateCourierTabPage : TabPage
             lblCostPer100g.Text = "Cost Per 100g";
             lblCostPer100g.Location = new Point(190, 50);
             lblCostPer100gValue.Location = new Point(300, 50);
+
+            lblEstimatedDaysToDeliver.Text = "Estimated Days To Deliver";
+            lblEstimatedDaysToDeliver.Size = new Size(200, 20);
+            lblEstimatedDaysToDeliver.Location = new Point(190, 80);
+            lblEstimatedDaysToDeliverValue.Location = new Point(190, 100);
 
             lblCourier.Text = "Intermediate Courier";
             lblCourier.Size = new Size(150, 20);
@@ -93,6 +101,8 @@ public class IntermediateCourierTabPage : TabPage
             this.Controls.Add(lblCurrencyTypeValue);
             this.Controls.Add(lblCostPer100g);
             this.Controls.Add(lblCostPer100gValue);
+            this.Controls.Add(lblEstimatedDaysToDeliver);
+            this.Controls.Add(lblEstimatedDaysToDeliverValue);
         }
         else
         {
@@ -148,5 +158,6 @@ public class IntermediateCourierTabPage : TabPage
 
         this.lblCurrencyTypeValue.Text = ic.CurrencyType;
         this.lblCostPer100gValue.Text = ic.CostPer100g.ToString();
+        this.lblEstimatedDaysToDeliverValue.Text = "" + ic.EstimatedDaysToDeliver;
     }
 }
