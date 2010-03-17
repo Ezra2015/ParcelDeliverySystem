@@ -24,5 +24,10 @@ namespace ParcelDeliverySystem
             this.Close();
             this.Dispose();
         }
+
+        private void rateCost_Click(object sender, EventArgs e)
+        {
+            new PostageRatesDialog().Show();
+        }
     }
 }

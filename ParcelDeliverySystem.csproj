@@ -76,6 +76,12 @@
     <Compile Include="EDTresult.Designer.cs">
       <DependentUpon>EDTresult.cs</DependentUpon>
     </Compile>
+    <Compile Include="PostageRatesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PostageRatesTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TextParse.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -98,6 +104,9 @@
     <EmbeddedResource Include="Local_OverseasPostageRates.resx">
       <DependentUpon>Local_OverseasPostageRates.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PostageRatesDialog.resx">
+      <DependentUpon>PostageRatesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -48,6 +48,14 @@
             this.rateCost.TabIndex = 1;
             this.rateCost.Text = "Postage Rates...";
             this.rateCost.UseVisualStyleBackColor = true;
+            this.rateCost.Click += new System.EventHandler(this.rateCost_Click);
+            // 
+            // datePicker
+            // 
+            this.datePicker.Location = new System.Drawing.Point(0, 0);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(200, 20);
+            this.datePicker.TabIndex = 0;
             // 
             // tabControl
             // 
