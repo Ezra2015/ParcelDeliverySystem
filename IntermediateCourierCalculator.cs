@@ -11,6 +11,7 @@ public class IntermediateCourierCalculator
     private ArrayList entries;
     private CurrencyConverter cc;
     private IntermediateCourierCalcResult result;
+    private PostageChargeCalculator pcc; 
 
     public IntermediateCourierCalcResult Result
     {
@@ -55,8 +56,12 @@ public class IntermediateCourierCalculator
             
             this.result = new IntermediateCourierCalcResult();
             this.result.courier = theIc;
+            //*******************************Modified/Addin by Ezra************************************
+            pcc = new PostageChargeCalculator();
             this.result.totalCost = new Currency(convertToCurrencyType, total);
             this.result.totalMass = mass;
+            pcc.writeToCourierText(this.result.courier, this.result.totalCost, this.result.totalMass);
+            //******************************************************************************************
 
             return total;
         }

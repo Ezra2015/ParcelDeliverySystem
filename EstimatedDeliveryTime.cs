@@ -10,10 +10,10 @@ public class EstimatedDeliveryTime
     private String weight;
     private String rateCost;
     private String availableDaysToDeliver;
-    private int estimatedDaysToDeliver;
+    private String estimatedDaysToDeliver;
 
     public EstimatedDeliveryTime(String originCountryName, String destCountryName, String deliveryService,         
-        String weight, String rateCost, String availableDaysToDeliver, int estimatedDaysToDeliver)
+        String weight, String rateCost, String availableDaysToDeliver, String estimatedDaysToDeliver)
     {
         this.originCountryName = originCountryName;
         this.destCountryName = destCountryName;
@@ -102,7 +102,7 @@ public class EstimatedDeliveryTime
         }
     }
 
-    public int EstimatedDaysToDeliver
+    public String EstimatedDaysToDeliver
     {
         get
         {

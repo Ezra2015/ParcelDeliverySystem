@@ -21,13 +21,20 @@ namespace ParcelDeliverySystem
         }
         private void closeBtn_Click(object sender, EventArgs e)
         {
+            PostageChargeCalculator pcc = new PostageChargeCalculator();
+            pcc.removeAllTxts();        
             this.Close();
-            this.Dispose();
         }
 
         private void rateCost_Click(object sender, EventArgs e)
         {
             new PostageRatesDialog().Show();
+        }
+
+        private void PDS_FormClosed(object sender, EventArgs e)
+        {
+            PostageChargeCalculator pcc = new PostageChargeCalculator();
+            pcc.removeAllTxts();
         }
     }
 }

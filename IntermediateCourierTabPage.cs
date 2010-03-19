@@ -78,8 +78,9 @@ public class IntermediateCourierTabPage : TabPage
             lblCurrency.Location = new Point(20, 140);
             currencies.Location = new Point(20, 170);
 
-            lblMass.Text = "Parcel Mass";
+            lblMass.Text = "Parcel Mass (grams)";
             lblMass.Location = new Point(20, 200);
+            lblMass.Size = new Size(150, 20);
             mass.Location = new Point(20, 230);
 
             calculateBtn.Location = new Point(20, 270);

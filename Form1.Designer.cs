@@ -131,6 +131,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Parcel Delivery System";
             this.Load += new System.EventHandler(this.PDS_Load);
+            this.FormClosed +=new System.Windows.Forms.FormClosedEventHandler(PDS_FormClosed);
             this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -145,6 +146,7 @@
         private CurrencyConverterTabPage currencyConverterTabPage1;
         private PostageChargeTabPage postageChargeTabPage1;
         private System.Windows.Forms.Button closeBtn;
+
     }
 }
 

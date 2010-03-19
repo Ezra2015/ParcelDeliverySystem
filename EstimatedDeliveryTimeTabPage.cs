@@ -11,7 +11,9 @@ public class EstimatedDeliveryTimeTabPage : TabPage
     private Label lblOrigCountry, lblDestCountry, lblDate, lblError;
     private DateTimePicker datePicker;
     private EstimatedDeliveryTimeCalculator edtc;
+    private PostageChargeCalculator pcc;
     private String EstimatedDeliveryTimeTxtPath = "estimatedDeliveryTime.txt";
+    private String wholeString;
 
     public EstimatedDeliveryTimeTabPage()
     {
@@ -51,6 +53,7 @@ public class EstimatedDeliveryTimeTabPage : TabPage
             lblDestCountry.Size = new Size(110,23);
             lblDestCountry.Location = new Point(6, 78);
             DestCountryCombo.Location = new Point(135, 78);
+            DestCountryCombo.SelectedIndex = 0;
 
             lblDate.Text = "Date(DD/MM/YYYY)";
             lblDate.Location = new Point(6, 117);
@@ -103,6 +106,7 @@ public class EstimatedDeliveryTimeTabPage : TabPage
 
     private void calBtn_Click(object sender, EventArgs e)
     {
+        PostageChargeCalculator pcc = new PostageChargeCalculator();
         EDTresult result = new EDTresult();
         String stringBuilder;
         String[] deliveryServiceName = new String[edtc.DeliveryServiceCount()];
@@ -128,12 +132,15 @@ public class EstimatedDeliveryTimeTabPage : TabPage
                                 stringBuilder += edtc.GetDeliveryServiceNames()[k].PadRight(30);
                                 stringBuilder += OrigCountryCombo.SelectedItem.ToString().PadRight(30);
                                 stringBuilder += DestCountryCombo.SelectedItem.ToString().PadRight(30);
-                                stringBuilder += (String.Format("{0:00}", this.datePicker.Value.Day) + "/" +
-                                        String.Format("{0:00}", this.datePicker.Value.Month) + "/" +
-                                        String.Format("{0:0000}", this.datePicker.Value.Year)).PadRight(30);
+                                wholeString += edtc.GetDeliveryServiceNames()[k] + "\t" + OrigCountryCombo.SelectedItem.ToString() + "\t" +
+                                        DestCountryCombo.SelectedItem.ToString() + "\t";
+                                wholeString += edtc.GetWeightRate(OrigCountryCombo.SelectedItem.ToString(),
+                                    DestCountryCombo.SelectedItem.ToString(), edtc.GetDeliveryServiceNames()[k]) + "\t";
+                                wholeString += edtc.GetRateCost(OrigCountryCombo.SelectedItem.ToString(),
+                                    DestCountryCombo.SelectedItem.ToString(), edtc.GetDeliveryServiceNames()[k]) + "\t";
                                 String[] getAvailableDays = edtc.GetAvailableDays(OrigCountryCombo.SelectedItem.ToString(),
                                     DestCountryCombo.SelectedItem.ToString(), edtc.GetDeliveryServiceNames()[k]);
-                                int getEstimatedDays = edtc.GetEstimatedDays(OrigCountryCombo.SelectedItem.ToString(),
+                                String getEstimatedDays = edtc.GetEstimatedDays(OrigCountryCombo.SelectedItem.ToString(),
                                     DestCountryCombo.SelectedItem.ToString(), edtc.GetDeliveryServiceNames()[k]);
                                 Boolean exist = false;
 
@@ -141,8 +148,18 @@ public class EstimatedDeliveryTimeTabPage : TabPage
                                 {
                                     if (this.datePicker.Value.ToString("ddd") == getAvailableDays[l])
                                     {
-                                        stringBuilder += this.datePicker.Value.AddHours(getEstimatedDays * 24)
+                                        stringBuilder += (String.Format("{0:00}", this.datePicker.Value.Day) + "/" +
+                                            String.Format("{0:00}", this.datePicker.Value.Month) + "/" +
+                                            String.Format("{0:0000}", this.datePicker.Value.Year)).PadRight(30);
+                                        stringBuilder += this.datePicker.Value.AddHours(int.Parse(getEstimatedDays) * 24)
                                             .ToString("dd/MM/yyyy").PadRight(30);
+                                        stringBuilder += getEstimatedDays;
+                                        wholeString += (String.Format("{0:00}", this.datePicker.Value.Day) + "/" +
+                                            String.Format("{0:00}", this.datePicker.Value.Month) + "/" +
+                                            String.Format("{0:0000}", this.datePicker.Value.Year));
+                                        wholeString += "\t" + this.datePicker.Value.AddHours(int.Parse(getEstimatedDays) * 24)
+                                            .ToString("dd/MM/yyyy") + "\t";
+                                        wholeString += getEstimatedDays + "\n";
                                         exist = true;
                                         break;
                                     }
@@ -150,8 +167,14 @@ public class EstimatedDeliveryTimeTabPage : TabPage
                                 if(!exist)
                                 {
                                     stringBuilder += "Not Available".PadRight(30);
+                                    stringBuilder += "Not Available".PadRight(30);
+                                    stringBuilder += "Not Available".PadRight(30);
+                                    wholeString += (String.Format("{0:00}", this.datePicker.Value.Day) + "/" +
+                                            String.Format("{0:00}", this.datePicker.Value.Month) + "/" +
+                                            String.Format("{0:0000}", this.datePicker.Value.Year)) + "\t";
+                                    wholeString += "Not Available\t";
+                                    wholeString += "Not Available\n";
                                 }
-                                stringBuilder += getEstimatedDays;
                                 stringBuilder += "\n------------------------------";// about 30 chars of '-'
                                 stringBuilder += "------------------------------";// about 30 chars of '-'
                                 stringBuilder += "------------------------------";// about 30 chars of '-'
@@ -166,6 +189,9 @@ public class EstimatedDeliveryTimeTabPage : TabPage
                 }
             }
             result.Show();
+            edtc.WriteToTempTxt(wholeString);
+            wholeString = null;
+            pcc.removeInterCourierFile();
         }
         else
         {

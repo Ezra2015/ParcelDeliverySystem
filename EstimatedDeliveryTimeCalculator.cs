@@ -3,6 +3,8 @@ using System.Collections;
 using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
+using System.IO;
+using System.Text;
 
 class EstimatedDeliveryTimeCalculator
 {
@@ -25,7 +27,7 @@ class EstimatedDeliveryTimeCalculator
             String[] s = ((String)dm.GetObject(i)).Split('\t');
 
             this.entries.Add(new EstimatedDeliveryTime(s[0], s[1], s[2], s[3],
-                s[4], s[5], Int32.Parse(s[6])));
+                s[4], s[5], s[6]));
         }
     }
 
@@ -108,6 +110,35 @@ class EstimatedDeliveryTimeCalculator
         }
 
         return null;
+    }
+
+    public String getOriginCountry()
+    {
+        ArrayList unique = new ArrayList();
+        bool exists = false;
+        String originCountry = "";
+        foreach (EstimatedDeliveryTime cds in this.entries)
+        {
+            foreach (String s in unique)
+            {
+                if (s.Equals(cds.OriginCountryName, StringComparison.OrdinalIgnoreCase))
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (!exists)
+            {
+                unique.Add(cds.OriginCountryName);
+            }
+            exists = false;
+        }
+        foreach (String s in unique)
+        {
+            originCountry =s;
+        }
+        return originCountry;
     }
 
     public String[] GetDeliveryServiceNames()
@@ -238,7 +269,7 @@ class EstimatedDeliveryTimeCalculator
         return null;
     }
 
-    public int GetEstimatedDays(String origCountry, String destCountry, String deliveryNames)
+    public String GetEstimatedDays(String origCountry, String destCountry, String deliveryNames)
     {
         ReadEntries();
 
@@ -279,6 +310,123 @@ class EstimatedDeliveryTimeCalculator
                 }
             }
         }
-        return -1;
+        return null;
+    }
+
+    public String GetWeightRate(String origCountry, String destCountry, String deliveryNames)
+    {
+        String weightString;
+        ReadEntries();
+
+        EstimatedDeliveryTime OrigCountry = null, DestCountry = null, DeliveryNames = null;
+        foreach (EstimatedDeliveryTime e in this.entries)
+        {
+            if (OrigCountry != null && DestCountry != null && DeliveryNames != null)
+                break;
+
+            if (OrigCountry == null)
+                if (e.OriginCountryName.Equals(origCountry, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    OrigCountry = e;
+                }
+
+            if (DestCountry == null)
+                if (e.DestCountryName.Equals(destCountry, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    DestCountry = e;
+                }
+
+            if (DeliveryNames == null)
+                if (e.DeliveryService.Equals(deliveryNames, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    DeliveryNames = e;
+                }
+        }
+
+        if (OrigCountry != null && DestCountry != null && DeliveryNames != null)
+        {
+            foreach (EstimatedDeliveryTime e in this.entries)
+            {
+                if (e.OriginCountryName.Equals(origCountry, System.StringComparison.OrdinalIgnoreCase) &&
+                    e.DestCountryName.Equals(destCountry, System.StringComparison.OrdinalIgnoreCase) &&
+                    e.DeliveryService.Equals(deliveryNames, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return weightString = e.Weight;
+                }               
+            }
+        }
+        return null;
+    }
+
+    public String GetRateCost(String origCountry, String destCountry, String deliveryNames)
+    {
+        String rateCost;
+        ReadEntries();
+
+        EstimatedDeliveryTime OrigCountry = null, DestCountry = null, DeliveryNames = null;
+        foreach (EstimatedDeliveryTime e in this.entries)
+        {
+            if (OrigCountry != null && DestCountry != null && DeliveryNames != null)
+                break;
+
+            if (OrigCountry == null)
+                if (e.OriginCountryName.Equals(origCountry, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    OrigCountry = e;
+                }
+
+            if (DestCountry == null)
+                if (e.DestCountryName.Equals(destCountry, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    DestCountry = e;
+                }
+
+            if (DeliveryNames == null)
+                if (e.DeliveryService.Equals(deliveryNames, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    DeliveryNames = e;
+                }
+        }
+
+        if (OrigCountry != null && DestCountry != null && DeliveryNames != null)
+        {
+            foreach (EstimatedDeliveryTime e in this.entries)
+            {
+                if (e.OriginCountryName.Equals(origCountry, System.StringComparison.OrdinalIgnoreCase) &&
+                    e.DestCountryName.Equals(destCountry, System.StringComparison.OrdinalIgnoreCase) &&
+                    e.DeliveryService.Equals(deliveryNames, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return rateCost = e.RateCost;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void WriteToTempTxt(string edtTxt)
+    {
+        //Store in mydocuments as temporary in local drive...
+        Environment.SpecialFolder mydocument = Environment.SpecialFolder.MyDocuments;
+        String folderLocation = Environment.GetFolderPath(mydocument);
+        // To prevent concurrent threads running together
+        try
+        {
+            if (File.Exists(folderLocation + "\\tempPostageCharge.txt"))
+            {
+                System.GC.Collect();
+                System.GC.WaitForPendingFinalizers();
+                File.Delete(folderLocation + "\\tempPostageCharge.txt");
+            }
+            String createtext = folderLocation + "\\tempPostageCharge.txt";
+            FileInfo file = new FileInfo(createtext);
+            StreamWriter writer = file.CreateText();
+
+            writer.Write(edtTxt.Trim());
+            writer.Close();
+            writer.Dispose();
+        }
+        catch (IOException fe)
+        {
+        }
     }
 }
